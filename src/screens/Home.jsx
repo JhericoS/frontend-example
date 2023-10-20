@@ -33,7 +33,7 @@ const Home = () => {
       <nav className="bg-[#434343]">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between text-white mx-auto p-4">
           <div className="flex items-center">
-            <h2 className="font-bold text-xl">FLITSTER</h2>
+            <h2 className="font-bold text-xl">FITSTER</h2>
           </div>
           <button
             data-collapse-toggle="navbar-multi-level"
