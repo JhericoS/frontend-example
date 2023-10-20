@@ -196,7 +196,7 @@ const Home = () => {
                   <ul className="py-1" role="none">
                     <li>
                       <a
-                        href="/home/registros-asistencia/estadisticas"
+                        href="/home"
                         className="block px-4 py-2 text-sm  text-zinc-300 hover:bg-zinc-600 hover:text-white"
                         role="menuitem"
                       >
