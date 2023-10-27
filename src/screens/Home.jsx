@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <nav className="bg-[#434343]">
+      <nav className="bg-[#181b5f]">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between text-white mx-auto p-4">
           <div className="flex items-center">
             <h2 className="font-bold text-xl">FITSTER</h2>
@@ -222,9 +222,93 @@ const Home = () => {
         </div>
       </nav>
 
-      <main className="mx-auto p-4">
+      <main className="mx-auto px-4 py-8 bg-zinc-300">
         <HomeRoutes />
       </main>
+
+      <footer>
+        <div className="mx-auto w-full max-w-screen-xl px-8 py-6 lg:py-8 lg:px-16">
+          <div className="flex flex-col md:grid md:grid-cols-3 md:gap-16 lg:gap-20 xl:gap-40 md:justify-between">
+            <div className="my-6 flex flex-col items-start">
+              <h2 className="font-bold text-lg lg:text-3xl mb-4">FITSTER</h2>
+              <ul className="font-light w-full">
+                <li className="mb-2">
+                  <label>Universidad Peruana de Ciencias Aplicadas</label>
+                </li>
+                <li className="mb-2 items-center">
+                  <label>Lima, Perú</label>
+                </li>
+              </ul>
+            </div>
+            <div className="my-6 flex flex-col items-start">
+              <h2 className="font-semibold text-lg mb-4">Links</h2>
+              <ul className="font-light w-full">
+                <li className="mb-2">
+                  <Link
+                    href="/home"
+                    className="hover:underline"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="mb-2 items-center">
+                  <Link
+                    href="/home/inventory"
+                    className="hover:underline"
+                  >
+                    Inventory
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    href="/home/about"
+                    className="hover:underline"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    href="/home/contact"
+                    className="hover:underline"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="my-6 flex flex-col items-start">
+              <h2 className="font-semibold text-lg mb-4">Help</h2>
+              <ul className="font-light w-full">
+                <li className="mb-2">
+                  <Link
+                    href="/home/returns"
+                    className="hover:underline"
+                  >
+                    Returns
+                  </Link>
+                </li>
+                <li className="mb-2 items-center">
+                  <Link
+                    href="/home/privacy-policies"
+                    className="hover:underline"
+                  >
+                    Privacy Policies
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700" />
+          <span className="block text-sm text-gray-500 sm:text-center lg:text-start dark:text-gray-400">
+            © 2023{" "}
+            <a href="" className="hover:underline">
+              FITSTER
+            </a>{" "}
+            All Rights Reserved.
+          </span>
+        </div>
+      </footer>
     </div>
   );
 };

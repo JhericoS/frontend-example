@@ -73,7 +73,7 @@ function Productos() {
   );
 
   return (
-    <div className="w-full flex flex-col md:mt-12">
+    <div className="w-full flex flex-col md:mt-8">
       <div className="flex mx-auto w-full max-w-7xl">
         <div className="w-full mb-8 mx-4 md:mx-8">
           <input
@@ -105,7 +105,7 @@ function Productos() {
                       <p className="font-semibold">Item Name:</p>
                     </div>
                     <div className="w-1/2 md:w-3/4">
-                      <p>{producto.name}</p>
+                      <Link to={`/home/inventory/card-product/${producto.id}`}>{producto.name}</Link>
                     </div>
                     <div className="w-1/2 md:w-1/4">
                       <p className="font-semibold">Category:</p>
@@ -161,7 +161,7 @@ function Productos() {
         <div className="flex justify-start items-center">
           <div className="mb-4">
             <Link
-              to="/home/nuevo-producto"
+              to="/home/inventory/nuevo-producto"
               className="block px-4 py-2 text-sm  hover:bg-[#ff6400] bg-zinc-600 text-white"
               role="menuitem"
             >
@@ -190,8 +190,8 @@ function Productos() {
                   key={producto.id}
                   className={`${index % 2 === 0 ? "bg-zinc-100" : "bg-white"}`}
                 >
-                  <td className="border border-gray-300 p-2">
-                    {producto.name}
+                  <td className="border border-gray-300 p-2 font-semibold">
+                  <Link to={`/home/inventory/card-product/${producto.id}`} className="hover:underline">{producto.name}</Link>
                   </td>
                   <td className="border border-gray-300 p-2">
                     {producto.category}
@@ -215,7 +215,7 @@ function Productos() {
                     {producto.model}
                   </td>
                   <td className="border font-semibold border-gray-300 p-2">
-                    <Link to={`/home/editar-producto/${producto.id}`}>
+                    <Link to={`/home/inventory/editar-producto/${producto.id}`}>
                       <button className="h-6 w-6 text-green-700 font-bold items-center justify-center bg-green-200  rounded-full">
                         <FaPencilAlt className="mx-auto h-3 w-3" />
                       </button>

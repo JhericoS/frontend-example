@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://squid-app-vvma9.ondigitalocean.app/api/users/login",
+        "https://squid-app-vvma9.ondigitalocean.app/api/usersproduct/login",
         {
           email: email,
           password: password,
@@ -46,7 +46,7 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-white md:bg-[#4a4a4a] min-h-screen flex flex-col md:flex-row">
+    <div className="bg-white md:bg-[#181a3b] min-h-screen flex flex-col md:flex-row">
       <div className="flex w-full py-16 md:my-auto items-center justify-center md:mx-auto md:w-2/3 md:px-8 lg:px-12 xl:px-20 2xl:px-24">
         <div className="md:mx-auto flex flex-col justify-center items-center">
           <img className="object-cover" src="/images/login.jpg" alt="login" />
@@ -56,7 +56,7 @@ const Login = () => {
       <div className="w-full mt-16 md:mt-0 md:w-1/3">
         <div className="flex justify-center items-center h-full">
           <div className="flex flex-col items-center justify-center">
-            <h2 className="mb-12 font-bold text-2xl lg:text-3xl uppercase">
+            <h2 className="mb-12 font-bold text-2xl lg:text-3xl uppercase text-white">
               FITSTER
             </h2>
             <form
@@ -64,7 +64,7 @@ const Login = () => {
               onSubmit={handleSubmit}
             >
               <label
-                className="mb-2 text-gray-800 font-bold"
+                className="mb-2 text-white font-bold"
                 htmlFor="username"
               >
                 Usuario
@@ -79,7 +79,7 @@ const Login = () => {
                 required
               />
               <label
-                className="mb-2 text-gray-800 font-bold"
+                className="mb-2 text-white font-bold"
                 htmlFor="password"
               >
                 Contraseña
@@ -94,7 +94,7 @@ const Login = () => {
                 required
               />
               <button
-                className="bg-[#232323] mx-auto my-8 rounded-xl text-white font-bold py-2 px-6"
+                className="bg-[#dbc72f] mx-auto my-8 rounded-xl text-black font-bold py-2 px-6"
                 type="submit"
               >
                 Sign In

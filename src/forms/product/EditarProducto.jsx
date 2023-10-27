@@ -89,7 +89,7 @@ const EditarProducto = () => {
 
       const productoActualizado = response.data;
       console.log("Producto actualizado:", productoActualizado);
-      navigate("/home");
+      navigate("/home/inventory");
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
       setErrorMessage("Error al actualizar el producto");
@@ -99,7 +99,10 @@ const EditarProducto = () => {
   return (
     <div className="w-full flex flex-col">
       <div className="flex my-4">
-        <Link to="/home" className="mx-2 px-4 py-2 rounded-lg bg-zinc-300">
+        <Link
+          to="/home/inventory"
+          className="mx-2 px-4 py-2 rounded-lg bg-zinc-400"
+        >
           Volver
         </Link>
       </div>
