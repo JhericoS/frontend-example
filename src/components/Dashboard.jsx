@@ -70,22 +70,22 @@ const Dashboard = () => {
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-lg shadow-md">
           <Bar data={data} options={options} />
-          <h2 className="text-lg font-bold mb-2">Gráfico 1</h2>
+          <h2 className="text-lg font-bold mb-2">Stock</h2>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow-md">
           <Doughnut data={data} options={options} />
-          <h2 className="text-lg font-bold mb-2">Gráfico 2</h2>
+          <h2 className="text-lg font-bold mb-2">Stock</h2>
         </div>
         
         <div className="bg-white p-4 rounded-lg shadow-md">
           <Line data={data} options={options} />
-          <h2 className="text-lg font-bold mb-2">Gráfico 3</h2>
+          <h2 className="text-lg font-bold mb-2">Más vendido</h2>
         </div>
         
         <div className="bg-white p-4 rounded-lg shadow-md">
           <Pie data={data} options={options} />
-          <h2 className="text-lg font-bold mb-2">Gráfico 4</h2>
+          <h2 className="text-lg font-bold mb-2">Más vendido</h2>
         </div>
         
       </div>
