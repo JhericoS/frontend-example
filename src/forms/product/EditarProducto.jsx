@@ -29,7 +29,7 @@ const EditarProducto = () => {
     const fetchProducto = async () => {
       try {
         const producto = await fetchData(
-          `https://squid-app-vvma9.ondigitalocean.app/api/productos/${id}`
+          `https://fitsterupcapi.azurewebsites.net/api/v1/products/${id}`
         );
         setName(producto.name || "");
         setPrice(producto.price || "");

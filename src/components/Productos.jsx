@@ -14,14 +14,9 @@ function Productos() {
     const fetchProductos = async () => {
       try {
         const response = await axios.get(
-          "https://squid-app-vvma9.ondigitalocean.app/api/productos",
-          {
-            params: {
-              limit: 1000,
-            },
-          }
+          "https://fitsterupcapi.azurewebsites.net/api/v1/products"
         );
-        const data = response.data.docs;
+        const data = response.data; // Los datos de la API
         setProductos(data);
       } catch (error) {
         console.log(error);
@@ -48,7 +43,7 @@ function Productos() {
     if (confirmed) {
       try {
         await axios.delete(
-          `https://squid-app-vvma9.ondigitalocean.app/api/productos/${productoId}`
+          `https://fitsterupcapi.azurewebsites.net/api/v1/products/${productoId}`
         );
         const updatedProductos = productos.filter(
           (producto) => producto._id !== productoId
@@ -62,7 +57,7 @@ function Productos() {
 
   const filteredRegistros = productos.filter((producto) => {
     const searchTermLower = searchTerm.toLowerCase();
-    return producto.name?.toLowerCase().includes(searchTermLower);
+    return producto.name.toLowerCase().includes(searchTermLower);
   });
 
   const pageCount = Math.ceil(filteredRegistros.length / registrosPerPage);
@@ -94,65 +89,71 @@ function Productos() {
             </tr>
           </thead>
           <tbody>
-            {currentRegistros.map((producto, index) => (
-              <tr
-                key={producto.id}
-                className={`${index % 2 === 0 ? "bg-zinc-100" : "bg-white"}`}
-              >
-                <td className="border px-6 flex items-start justify-start border-gray-300 p-2">
-                  <div className="flex flex-wrap">
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Item Name:</p>
+            {currentRegistros.map((producto, index) => {
+              return (
+                <tr
+                  key={producto.id}
+                  className={`${index % 2 === 0 ? "bg-zinc-100" : "bg-white"}`}
+                >
+                  <td className="border px-6 flex items-start justify-start border-gray-300 p-2">
+                    <div className="flex flex-wrap">
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Item Name:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <Link
+                          to={`/home/inventory/card-product/${producto.id}`}
+                        >
+                          {producto.name}
+                        </Link>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Category:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <p>{producto.category}</p>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Type:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <p>{producto.type}</p>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Brand:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <p>{producto.brand}</p>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Price:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <p>{producto.price}</p>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Stock:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        <p>{producto.stock}</p>
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Image:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        {producto.image ? "Sí" : "No hay imagen"}
+                      </div>
+                      <div className="w-1/2 md:w-1/4">
+                        <p className="font-semibold">Model 3D:</p>
+                      </div>
+                      <div className="w-1/2 md:w-3/4">
+                        {producto.model3d ? "Sí" : "No hay model 3D"}
+                      </div>
                     </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <Link to={`/home/inventory/card-product/${producto.id}`}>{producto.name}</Link>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Category:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.category}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Type:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.type}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Brand:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.brand}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Price:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.price}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Stock:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.stock}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Image:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.image}</p>
-                    </div>
-                    <div className="w-1/2 md:w-1/4">
-                      <p className="font-semibold">Model 3D:</p>
-                    </div>
-                    <div className="w-1/2 md:w-3/4">
-                      <p>{producto.model}</p>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -191,7 +192,12 @@ function Productos() {
                   className={`${index % 2 === 0 ? "bg-zinc-100" : "bg-white"}`}
                 >
                   <td className="border border-gray-300 p-2 font-semibold">
-                  <Link to={`/home/inventory/card-product/${producto.id}`} className="hover:underline">{producto.name}</Link>
+                    <Link
+                      to={`/home/inventory/card-product/${producto.id}`}
+                      className="hover:underline"
+                    >
+                      {producto.name}
+                    </Link>
                   </td>
                   <td className="border border-gray-300 p-2">
                     {producto.category}
@@ -209,10 +215,10 @@ function Productos() {
                     {producto.stock}
                   </td>
                   <td className="border border-gray-300 p-2">
-                    {producto.image}
+                    {producto.image ? "Sí" : "No hay imagen"}
                   </td>
                   <td className="border border-gray-300 p-2">
-                    {producto.model}
+                    {producto.model3d ? "Sí" : "No hay model 3D"}
                   </td>
                   <td className="border font-semibold border-gray-300 p-2">
                     <Link to={`/home/inventory/editar-producto/${producto.id}`}>

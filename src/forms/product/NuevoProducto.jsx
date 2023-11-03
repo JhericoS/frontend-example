@@ -43,7 +43,7 @@ const NuevoProducto = () => {
 
     try {
       const response = await axios.post(
-        "https://squid-app-vvma9.ondigitalocean.app/api/productos",
+        "https://fitsterupcapi.azurewebsites.net/api/v1/products",
         {
           name,
           price,

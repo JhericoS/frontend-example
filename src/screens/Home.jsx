@@ -129,15 +129,15 @@ const Home = () => {
               </li>
               <li>
                 <Link
-                  to="/home/about"
+                  to="/home/resources"
                   className={`block py-2 pl-3 pr-4 text-black lg:text-white rounded lg:bg-transparent lg:p-0 ${
-                    location.pathname.startsWith("/home/about")
+                    location.pathname.startsWith("/home/resources")
                       ? "font-bold"
                       : " font-normal"
                   }`}
                   aria-current="page"
                 >
-                  About
+                  Resources
                 </Link>
               </li>
               <li>
@@ -261,10 +261,10 @@ const Home = () => {
                 </li>
                 <li className="mb-2">
                   <Link
-                    href="/home/about"
+                    href="/home/resources"
                     className="hover:underline"
                   >
-                    About
+                    Resources
                   </Link>
                 </li>
                 <li className="mb-2">
