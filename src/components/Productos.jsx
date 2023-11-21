@@ -6,9 +6,41 @@ import { FaMinus, FaPencilAlt } from "react-icons/fa";
 
 function Productos() {
   const [productos, setProductos] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const registrosPerPage = 10;
+  const brandsMap = {
+    1: "Adidas",
+    2: "Nike",
+    3: "Levi's",
+    4: "Calvin Klein",
+    5: "Gucci",
+    6: "Ralph Lauren",
+    7: "Puma",
+    8: "Tommy Hilfiger",
+    9: "Under Armour",
+    10: "Gap",
+  };
+
+  const typesMap = {
+    1: "Men",
+    2: "Women",
+    3: "Kids",
+  };
+
+  const categoriesMap = {
+    1: "T-Shirt",
+    2: "Pants",
+    3: "Dress",
+    4: "Jeans",
+    5: "Shirt",
+    6: "Blouse",
+    7: "Sweater",
+    8: "Jacket",
+    9: "Hoodie",
+    10: "Short",
+  };
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -23,8 +55,23 @@ function Productos() {
       }
     };
 
+    const fetchBrands = async () => {
+      try {
+        const response = await axios.get(
+          "https://fitsterupcapi.azurewebsites.net/api/v1/brands"
+        );
+        const data = response.data; // Los datos de la API
+        setBrands(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchProductos();
-  }, []);
+    fetchBrands();
+
+    console.log(brands);
+  }, [brands]);
 
   const handlePageChange = ({ selected }) => {
     setPageNumber(selected);
@@ -111,19 +158,19 @@ function Productos() {
                         <p className="font-semibold">Category:</p>
                       </div>
                       <div className="w-1/2 md:w-3/4">
-                        <p>{producto.category}</p>
+                        <p>{categoriesMap[producto.categoryId]}</p>
                       </div>
                       <div className="w-1/2 md:w-1/4">
                         <p className="font-semibold">Type:</p>
                       </div>
                       <div className="w-1/2 md:w-3/4">
-                        <p>{producto.type}</p>
+                        <p>{typesMap[producto.genderId]}</p>
                       </div>
                       <div className="w-1/2 md:w-1/4">
                         <p className="font-semibold">Brand:</p>
                       </div>
                       <div className="w-1/2 md:w-3/4">
-                        <p>{producto.brand}</p>
+                        <p>{brandsMap[producto.brandId]}</p>
                       </div>
                       <div className="w-1/2 md:w-1/4">
                         <p className="font-semibold">Price:</p>
@@ -200,13 +247,13 @@ function Productos() {
                     </Link>
                   </td>
                   <td className="border border-gray-300 p-2">
-                    {producto.category}
+                    {categoriesMap[producto.categoryId]}
                   </td>
                   <td className="border border-gray-300 p-2">
-                    {producto.type}
+                    {typesMap[producto.genderId]}
                   </td>
                   <td className="border border-gray-300 p-2">
-                    {producto.brand}
+                    {brandsMap[producto.brandId]}
                   </td>
                   <td className="border border-gray-300 p-2">
                     {producto.price}

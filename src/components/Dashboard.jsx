@@ -89,7 +89,7 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       </div>
       <div className="flex flex-col w-full items-center max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 gap-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="bg-white p-4 rounded-lg shadow-md items-center justify-center flex flex-col">
             <Line data={data} options={options} />
           </div>

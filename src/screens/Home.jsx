@@ -245,7 +245,7 @@ const Home = () => {
               <ul className="font-light w-full">
                 <li className="mb-2">
                   <Link
-                    href="/home"
+                    to="/home"
                     className="hover:underline"
                   >
                     Home
@@ -253,7 +253,7 @@ const Home = () => {
                 </li>
                 <li className="mb-2 items-center">
                   <Link
-                    href="/home/inventory"
+                    to="/home/inventory"
                     className="hover:underline"
                   >
                     Inventory
@@ -261,7 +261,7 @@ const Home = () => {
                 </li>
                 <li className="mb-2">
                   <Link
-                    href="/home/resources"
+                    to="/home/resources"
                     className="hover:underline"
                   >
                     Resources
@@ -269,7 +269,7 @@ const Home = () => {
                 </li>
                 <li className="mb-2">
                   <Link
-                    href="/home/contact"
+                    to="/home/contact"
                     className="hover:underline"
                   >
                     Contact
@@ -282,7 +282,7 @@ const Home = () => {
               <ul className="font-light w-full">
                 <li className="mb-2">
                   <Link
-                    href="/home/returns"
+                    to="https://emertechupc.github.io/fitster_website"
                     className="hover:underline"
                   >
                     Returns
@@ -290,7 +290,7 @@ const Home = () => {
                 </li>
                 <li className="mb-2 items-center">
                   <Link
-                    href="/home/privacy-policies"
+                    to="https://emertechupc.github.io/fitster_website"
                     className="hover:underline"
                   >
                     Privacy Policies
@@ -302,7 +302,7 @@ const Home = () => {
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700" />
           <span className="block text-sm text-gray-500 sm:text-center lg:text-start dark:text-gray-400">
             © 2023{" "}
-            <a href="" className="hover:underline">
+            <a href="https://emertechupc.github.io/fitster_website" target="_blank" className="hover:underline">
               FITSTER
             </a>{" "}
             All Rights Reserved.

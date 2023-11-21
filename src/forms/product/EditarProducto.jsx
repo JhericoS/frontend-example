@@ -13,6 +13,38 @@ const EditarProducto = () => {
   const [brand, setBrand] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const brandsMap = {
+    1: "Adidas",
+    2: "Nike",
+    3: "Levi's",
+    4: "Calvin Klein",
+    5: "Gucci",
+    6: "Ralph Lauren",
+    7: "Puma",
+    8: "Tommy Hilfiger",
+    9: "Under Armour",
+    10: "Gap",
+  };
+
+  const typesMap = {
+    1: "Men",
+    2: "Women",
+    3: "Kids",
+  };
+
+  const categoriesMap = {
+    1: "T-Shirt",
+    2: "Pants",
+    3: "Dress",
+    4: "Jeans",
+    5: "Shirt",
+    6: "Blouse",
+    7: "Sweater",
+    8: "Jacket",
+    9: "Hoodie",
+    10: "Short",
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,9 +66,9 @@ const EditarProducto = () => {
         setName(producto.name || "");
         setPrice(producto.price || "");
         setStock(producto.stock || "");
-        setCategory(producto.category || "");
-        setType(producto.type || "");
-        setBrand(producto.brand || "");
+        setCategory(producto.categoryId || "");
+        setType(producto.genderId || "");
+        setBrand(producto.brandId || "");
       } catch (error) {
         console.error("Error al obtener el producto:", error);
       }
@@ -70,24 +102,35 @@ const EditarProducto = () => {
   const handleBrandChange = (e) => {
     setBrand(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(
-        `https://squid-app-vvma9.ondigitalocean.app/api/productos/${id}`,
-        {
-          name,
-          price,
-          stock,
-          category,
-          type,
-          brand,
-        }
+      const response = await axios.get(
+        `https://fitsterupcapi.azurewebsites.net/api/v1/products/${id}`
+      );
+      const existingProduct = response.data;
+
+      const updatedProduct = {
+        name,
+        price,
+        stock,
+        categoryId: category,
+        genderId: type,
+        brandId: brand,
+        description: existingProduct.description,
+        rating: existingProduct.rating,
+        size: existingProduct.size,
+        image: existingProduct.image,
+        model3d: existingProduct.model3d,
+      };
+
+      const putResponse = await axios.put(
+        `https://fitsterupcapi.azurewebsites.net/api/v1/products/${id}`,
+        updatedProduct
       );
 
-      const productoActualizado = response.data;
+      const productoActualizado = putResponse.data;
       console.log("Producto actualizado:", productoActualizado);
       navigate("/home/inventory");
     } catch (error) {
@@ -194,13 +237,12 @@ const EditarProducto = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 required
               >
-                <option value="">Seleccionar category</option>
-                <option value="T-Shirt">T-Shirt</option>
-                <option value="Pants">Pants</option>
-                <option value="Shorts">Shorts</option>
-                <option value="Jacket">Jacket</option>
-                <option value="Dress">Dress</option>
-                <option value="Tank Top">Tank Top</option>
+                <option value="">Seleccionar categoría</option>
+                {Object.keys(categoriesMap).map((categoryId) => (
+                  <option key={categoryId} value={categoryId}>
+                    {categoriesMap[categoryId]}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -215,10 +257,12 @@ const EditarProducto = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 required
               >
-                <option value="">Seleccionar type</option>
-                <option value="Men">Men</option>
-                <option value="Momen">Women</option>
-                <option value="Kids">Kids</option>
+                <option value="">Seleccionar tipo</option>
+                {Object.keys(typesMap).map((typeId) => (
+                  <option key={typeId} value={typeId}>
+                    {typesMap[typeId]}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -227,19 +271,18 @@ const EditarProducto = () => {
                 Brand <span className=" text-red-500">*</span>
               </label>
               <select
-                type="text"
                 id="brand"
                 value={brand}
                 onChange={handleBrandChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 required
               >
-                <option value="">Seleccionar brand</option>
-                <option value="Adidas">Adidas</option>
-                <option value="Nike">Nike</option>
-                <option value="Puma">Puma</option>
-                <option value="Fila">Fila</option>
-                <option value="Gucci">Gucci</option>
+                <option value="">Seleccionar marca</option>
+                {Object.keys(brandsMap).map((brandId) => (
+                  <option key={brandId} value={brandId}>
+                    {brandsMap[brandId]}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

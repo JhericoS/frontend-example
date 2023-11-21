@@ -4,13 +4,13 @@ function Resources() {
   const [selectedTable, setSelectedTable] = useState("Brand");
 
   const tables = {
-    Brand: ["Adidas", "Nike", "Puma", "Fila", "Gucci"],
+    Brand: ["Adidas", "Nike", "Levi's", "Calvin Klein", "Gucci", "Ralph Lauren", "Puma", "Tommy Hilfiger", "Under Armour", "Gap"],
     Type: ["Men", "Women", "Kids"],
-    Category: ["T-Shirt", "Pants", "Shorts", "Jacket", "Dress", "Tank Top"],
+    Category: ["T-Shirt", "Pants", "Dress", "Jeans", "Shirt", "Blouse", "Sweater", "Jacket", "Hoodie", "Short"],
   };
 
   return (
-    <div className="w-full flex flex-col md:mt-8 p-4">
+    <div className="w-full flex flex-col p-4">
       <div className="flex flex-col items-center mb-4">
         <h1 className="text-2xl font-bold mb-4">Resources</h1>
       </div>
